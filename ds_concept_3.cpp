@@ -113,8 +113,7 @@ int main() {
 }
 
 
-
-// module 2.5 problem 7 got tle error. solve using binary search
+// module 2.5 problem 7 got tle error
 int main() {
     int n, q;
     cin >> n >> q;
@@ -157,3 +156,127 @@ int main() {
     
     return 0;
 }
+
+
+
+
+// CUSTOM PROBLEM 1
+int main() {
+    int n;
+    cin >> n;
+    
+    int a[n];
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    
+    int x;
+    cin >> x;
+    
+    bool isDuplicate = false;
+    int l = 0, r = n - 1;
+    while (l <= r) {
+        int middleIndex = (l + r) / 2;
+        if (a[middleIndex] == x) {
+            if (middleIndex > 0 && a[middleIndex - 1] == x || middleIndex < n - 1 && a[middleIndex + 1] == x) {
+                isDuplicate = true;
+                break;
+            }
+        }
+        
+        if (x > a[middleIndex]) {
+            l = middleIndex + 1;
+        } else {
+            r = middleIndex - 1;
+        }
+    }
+    
+    if (isDuplicate == true) {
+        cout << "True" << endl;
+    } else {
+        cout << "False" << endl;
+    }
+    
+    return 0;
+}
+
+
+// If specific number is not given. then use linear search for better complexity
+int main() {
+    int n;
+    cin >> n;
+    
+    int a[n];
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    
+    bool isDuplicate = false;
+    
+    for (int i = 0; i < n; i++) {
+        if (a[i] == a[i + 1] || a[i] == a[i - 1]) {
+            isDuplicate = true;
+            break;
+        }
+    }
+    
+    if (isDuplicate == true) {
+        cout << "found" << endl;
+    } else {
+        cout << "not found" << endl;
+    }
+    
+    return 0;   
+}
+
+
+// CUSTOM PROBLEM 2
+// demo
+int main() {
+    int n;
+    cin >> n;
+    
+    int a[n];
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    
+    int pre[n];
+    pre[0] = a[0];
+    
+    for (int i = 1; i < n; i++) {
+        pre[i] = a[i] + pre[i - 1];
+    }
+    
+    for (int i = 0; i < n; i++) {
+        cout << pre[i] << " ";
+    }
+    
+    return 0;
+}
+
+
+int main() {
+    int n;
+    cin >> n;
+    
+    vector<int> v(n);
+    for (int i = 0; i < n; i++) {
+        cin >> v[i];
+    }
+    
+    vector<int> pre(n);
+    pre[0] = 0;
+    
+    for (int i = 1; i < n; i++) {
+        pre[i] = v[i - 1] + pre[i - 1];
+    }
+    
+    for (int i = 0; i < n; i++) {
+        cout << pre[i] << " ";
+    }
+    
+    return 0;
+}
+
+
