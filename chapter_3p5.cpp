@@ -4,7 +4,8 @@
 using namespace std;
 
 // Problem 1
-/* int main() {
+// Without function
+int main() {
     int n;
     cin >> n;
     
@@ -28,6 +29,7 @@ using namespace std;
 }
 
 
+// Using function
 vector<int> runningSum(int n, vector<int> v) {
     vector<int> pre(n);
     pre[0] = v[0];
@@ -55,7 +57,7 @@ int main() {
     }
     
     return 0;
-} */
+}
 
 
 // PROBLEM 2
