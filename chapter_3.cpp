@@ -231,7 +231,7 @@ int main() {
 
 
 // CUSTOM PROBLEM 2
-// demo
+// Running sum
 int main() {
     int n;
     cin >> n;
