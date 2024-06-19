@@ -344,22 +344,7 @@ int main() {
     if (it == v.end()) {
         cout << -1 << endl;
     } else {
-        cout<< distance(v.begin(), it) ;
-    }
-    
-    // without distance function
-    int index = -1;
-    for (int i = 0; i < n; i++) {
-        if (v[i] == findVal) {
-            index = i;
-            break;
-        }
-    }
-
-    if (index == -1) {
-        cout << -1 << endl;
-    } else {
-        cout << index << endl;
+        cout<< it - v.begin()) ; // Or - *(it) - 1
     }
 
     return 0;
@@ -388,5 +373,3 @@ int main() {
 
     return 0;
 }
-
-
