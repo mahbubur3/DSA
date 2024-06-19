@@ -131,3 +131,10 @@ for (int i = n / 2; i <= n; i++) { // O(N)
 }
 // total complexity O(Nlog(N))
 
+
+int k = 1;
+while (k <= n) { // O(logN)
+    cout << k << endl;
+    k = k * 2; 
+}
+
