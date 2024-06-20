@@ -4,62 +4,62 @@
 
 using namespace std;
 
-/* int main() {
-	// int a[5] = {10, 20, 30, 40, 50};
+int main() {
+	int a[5] = {10, 20, 30, 40, 50};
 	
-	// vector<int> v(a, a + 5);
-	// for (int i = 0; i < v.size(); i++) {
-	// 	cout << v[i] << " ";
-	// }
+	vector<int> v(a, a + 5);
+	for (int i = 0; i < v.size(); i++) {
+		cout << v[i] << " ";
+	}
 
 
-	// vector<int> v = {10, 20, 30};
-	// for (int i = 0; i < v.size(); i++) {
-	// 	cout << v[i] << endl;
-	// }
+	vector<int> v = {10, 20, 30};
+	for (int i = 0; i < v.size(); i++) {
+		cout << v[i] << endl;
+	}
 
 
-	// vector<int> v = {10, 20, 30};
-	// v.pop_back();
-	// for (int i = 0; i < v.size(); i++) {
-	// 	cout << v[i] << endl;
-	// }
+	vector<int> v = {10, 20, 30};
+	v.pop_back();
+	for (int i = 0; i < v.size(); i++) {
+		cout << v[i] << endl;
+	}
 
 
-	// vector<int> a = {10, 20, 30};
-	// a.insert(a.begin() + 1, 100);
-	// for (int i : a) {
-	// 	cout << i << " ";
-	// }
+	vector<int> a = {10, 20, 30};
+	a.insert(a.begin() + 1, 100);
+	for (int i : a) {
+		cout << i << " ";
+	}
 
 
-	// vector<int> a = {10, 20, 30};
-	// a.insert(a.begin(), 100);
-	// for (int i : a) {
-	// 	cout << i << " ";
-	// }
+	vector<int> a = {10, 20, 30};
+	a.insert(a.begin(), 100);
+	for (int i : a) {
+		cout << i << " ";
+	}
 
 
-	// vector<int> a = {10, 20, 30};
-	// a.insert(a.end(), 100);
-	// for (int i : a) {
-	// 	cout << i << " ";
-	// }
+	vector<int> a = {10, 20, 30};
+	a.insert(a.end(), 100);
+	for (int i : a) {
+		cout << i << " ";
+	}
 
 
-	// vector<int> a = {10, 20, 30};
-	// vector<int> b = {99, 88};
-	// a.insert(a.end(), b.begin(), b.end());
-	// for (int i : a) {
-	// 	cout << i << " ";
-	// }
+	vector<int> a = {10, 20, 30};
+	vector<int> b = {99, 88};
+	a.insert(a.end(), b.begin(), b.end());
+	for (int i : a) {
+		cout << i << " ";
+	}
 
 
-	// vector<int> a = {5, 9, 2, 8, 1};
-	// replace(a.begin(), a.end(), 5, 100);
-	// for (int i : a) {
-	// 	cout << i << " ";
-	// }
+	vector<int> a = {5, 9, 2, 8, 1};
+	replace(a.begin(), a.end(), 5, 100);
+	for (int i : a) {
+		cout << i << " ";
+	}
 
 
 	vector<int> a = {5, 3, 2, 5, 9, 5, 7, 2};
@@ -71,11 +71,11 @@ using namespace std;
 	}
 
 	return 0;
-} */
+}
 
 
 // Capital first character of string
-/* int main() {
+int main() {
 	int n;
 	cin >> n;
 	cin.ignore();
@@ -94,11 +94,11 @@ using namespace std;
 	}
 
 	return 0;
-} */
+}
 
 
 // Replace number and find index
-/* int main() {
+int main() {
 	int n, oldNum, newNum, findNum;
 	cin >> n;
 
@@ -125,12 +125,12 @@ using namespace std;
 	}
 
 	return 0;
-} */
+}
 
 
 // Codeforces problems
 // New array
-/* int main() {
+int main() {
 	int n;
 	cin >> n;
 
@@ -150,11 +150,11 @@ using namespace std;
 	}
 
 	return 0;
-} */
+}
 
 
 // Reversing
-/* int main() {
+int main() {
 	int n;
 	cin >> n;
 
@@ -170,4 +170,4 @@ using namespace std;
 	}
 
 	return 0;
-}  */
+}
