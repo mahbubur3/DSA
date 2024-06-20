@@ -176,18 +176,18 @@ int main() {
     bool isDuplicate = false;
     int l = 0, r = n - 1;
     while (l <= r) {
-        int middleIndex = (l + r) / 2;
-        if (a[middleIndex] == x) {
-            if (middleIndex > 0 && a[middleIndex - 1] == x || middleIndex < n - 1 && a[middleIndex + 1] == x) {
+        int midIndex = (l + r) / 2;
+        if (a[midIndex] == x) {
+            if (midIndex != 0 && a[midIndex - 1] == x || midIndex != n - 1 && a[midIndex + 1] == x) {
                 isDuplicate = true;
                 break;
             }
         }
         
-        if (x > a[middleIndex]) {
-            l = middleIndex + 1;
+        if (x > a[midIndex]) {
+            l = midIndex + 1;
         } else {
-            r = middleIndex - 1;
+            r = midIndex - 1;
         }
     }
     
@@ -211,10 +211,11 @@ int main() {
         cin >> a[i];
     }
     
+    sort(a, a + n);
     bool isDuplicate = false;
-    
-    for (int i = 0; i < n; i++) {
-        if (a[i] == a[i + 1] || a[i] == a[i - 1]) {
+
+    for (int i = 0; i < n - 1; i++) {
+        if (a[i] == a[i + 1]) {
             isDuplicate = true;
             break;
         }
@@ -278,5 +279,3 @@ int main() {
     
     return 0;
 }
-
-
