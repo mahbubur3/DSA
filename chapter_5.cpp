@@ -3,7 +3,7 @@
 using namespace std;
 
 // Create Node
-/*class Node {
+class Node {
 	public:
 		int num;
 		Node* next;
@@ -14,19 +14,20 @@ int main() {
 
 	a.num = 20;
 	b.num = 40;
+
 	a.next = &b;
 	b.next = NULL;
 
 	cout << a.num << endl;
-	// cout << (*a.next).num << endl; // OR
-	cout << a.next->num << endl;
+	cout << (*a.next).num << endl; // OR
+	// cout << a.next->num << endl;
 
 	return 0;
-}*/
+}
 
 
-// Ruff
-/*class Node {
+// Ruff - create node
+class Node {
 	public:
 		int num;
 		Node* next;
@@ -41,17 +42,18 @@ int main() {
 
 	a.next = &b;
 	b.next = &c;
+	c.next = NULL;
 
 	cout << a.num << endl;
 	cout << a.next->num << endl;
-	cout << b.next->num << endl;
+	cout << a.next->next->num << endl;
 
 	return 0;
-}*/
+}
 
 
 // Constructor
-/* class Node {
+class Node {
 	public:
 		int num;
 		Node* next;
@@ -72,12 +74,12 @@ int main() {
 	cout << a.next->num << endl;
 
 	return 0;
-} */
+}
 
 
 
 // Create dynamic node
-/* class Node {
+class Node {
 public:
 	int number;
 	Node* next;
@@ -101,11 +103,11 @@ int main() {
 	cout << (*(*head).next).number << endl;
 
 	return 0;
-} */
+}
 
 
 // Ruff
-/*class Node {
+class Node {
 public:
 	int num;
 	Node* next;
@@ -126,7 +128,7 @@ int main() {
 	cout << head->next->num << endl;
 
 	return 0;
-}*/
+}
 
 
 class Node {
@@ -158,6 +160,154 @@ int main() {
 
 	cout << head->num << endl;
 	cout << head->next->num << endl;
+
+	return 0;
+}
+
+
+// Dynamic object node with printing singly linked list 
+class Node {
+public:
+	int num;
+	Node* next;
+
+	Node(int num) {
+		this->num = num;
+		this->next = NULL;
+	}
+};
+
+int main() {
+    Node* head = new Node(40);
+    Node* b = new Node(80);
+    Node* c = new Node(70);
+    Node* d = new Node(20);
+    
+    head->next = b;
+    b->next = c;
+    c->next = d;
+    
+    // cout << head->num << endl;
+    // cout << head->next->num << endl;
+    // cout << head->next->next->num << endl;
+    
+    // we cannot print this list in second time. cause head is null, so we need temp
+    // while (head != NULL) {
+    //     cout << head->num << endl;
+    //     head = head->next;
+    // }
+    
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp-> num << endl;
+        temp = temp->next;
+    }
+    
+    // temp = head; // if we need to print second time
+    // while (temp != NULL) {
+    //     cout << temp-> num << endl;
+    //     temp = temp->next;
+    // }
+    
+    return 0;
+}
+
+
+// RECAP
+class Node {
+    public:
+    int num;
+    Node* next;
+    
+    Node(int num) {
+        this->num = num;
+        this->next = NULL;
+    }
+};
+
+int main() {
+    Node head(100);
+    Node b(200);
+    Node c(300);
+    Node d(400);
+    
+    head.next = &b;
+    b.next = &c;
+    c.next = &d;
+    
+    cout << head.num << endl;
+    cout << head.next->num << endl;
+    cout << head.next->next->num << endl;
+    cout << head.next->next->next->num << endl;
+
+    return 0;
+}
+
+// Dynamic object node
+class Node {
+public:
+	int num;
+	Node* next;
+
+	Node(int num) {
+		this->num = num;
+		this->next = NULL;
+	}
+};
+
+int main() {
+    Node* head = new Node(400);
+    Node* b = new Node(800);
+    Node* c = new Node(700);
+    
+    head->next = b; // cause head is pointer
+    b->next = c; // b is also pointer & c is also
+    
+    
+    cout << head->num << endl;
+    cout << head->next->num << endl;
+    cout << head->next->next->num << endl;
+    
+    return 0;
+}
+
+
+
+/* EXERCISE */
+// number f
+class Node {
+public:
+	int num;
+	Node* next;
+
+	Node(int num) {
+		this->num = num;
+		this->next = NULL;
+	}
+};
+
+int main() {
+	Node* head = new Node(10);
+	Node* a = new Node(20);
+	Node* b = new Node(30);
+	Node* c = new Node(40);
+	Node* d = new Node(50);
+	Node* e = new Node(60);
+
+	head->next = a;
+	a->next = b;
+	b->next = c;
+	c->next = d;
+	d->next = e;
+
+	int sum = 0;
+	Node* temp = head;
+	while (temp->num != 50) {
+		sum = sum + temp->num;
+		temp = temp->next;
+	}
+
+	cout << sum << endl;
 
 	return 0;
 }
