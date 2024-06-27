@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 
 using namespace std;
 
@@ -76,7 +75,7 @@ int main() {
 
 
 // Insert number on tail
-/* void insertAtTail(Node* &head, int n) {
+void insertAtTail(Node* &head, int n) {
 	Node* newNode = new Node(n); // Create new node
 
 	// If head is null
@@ -118,7 +117,6 @@ int main() {
 		cin >> option;
 		if (option == 1) {
 			cout << "Enter number: ";
-			
 			int n;
 			cin >> n;
 
@@ -136,7 +134,7 @@ int main() {
 
 
 // Insert at any position
-/* class Node {
+class Node {
 public:
 	int num;
 	Node* next;
@@ -208,7 +206,6 @@ int main() {
 			cout << "Enter number: ";
 			int n;
 			cin >> n;
-
 			insertAtTail(head, n);
 		} else if (option == 2) {
 			printList(head);
@@ -463,4 +460,767 @@ int main() {
 	}
 
 	return 0;
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// insert at tail recap
+class Node {
+public:
+    int num;
+    Node* next;
+
+    Node(int num) {
+        this->num = num;
+        this->next = NULL;
+    }
+};
+
+// Insert
+void insertTail(Node*& head, int n) {
+    Node* newNode = new Node(n);
+    if (head == NULL) { // Linked list is empty
+        head = newNode; // Set new node is head or first number
+        return;
+    }
+
+    Node* temp = head;
+    while (temp->next != NULL) {
+        temp = temp->next; // Now head in last
+    }
+
+    temp->next = newNode; // Set new node at last
+}
+
+// Print
+void printLinkedList(Node* head) {
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->num << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* head = NULL;
+
+    while (true) {
+        cout << "Option 1: Insert at tail" << endl;
+        cout << "Option 2: Print linked list" << endl;
+        cout << "Option 3: Terminate" << endl;
+
+        int o;
+        cin >> o;
+
+        if (o == 1) {
+            cout << "Enter item: ";
+            int n;
+            cin >> n;
+            insertTail(head, n);
+        } else if (o == 2) {
+            printLinkedList(head);
+        } else if (o == 3) {
+            break;
+        }
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
+// insert at any position except head
+class Node {
+public:
+    int num;
+    Node* next;
+
+    Node(int num) {
+        this->num = num;
+        this->next = NULL;
+    }
+};
+
+// Insert at tail
+void insertTail(Node*& head, int n) {
+    Node* newNode = new Node(n);
+    if (head == NULL) { // Linked list is empty
+        head = newNode; // Set new node is head or first number
+        return;
+    }
+
+    Node* temp = head;
+    while (temp->next != NULL) {
+        temp = temp->next; // Now head in last
+    }
+
+    temp->next = newNode; // Set new node at last
+}
+
+// Insert at any position
+void insertAnyPosition(Node* head, int p, int n) {
+	Node* newNode = new Node(n);
+	Node* temp = head;
+	for (int i = 1; i <= p - 1; i++) {
+		temp = temp->next; // Move temp to p
+	}
+
+	newNode->next = temp->next; // connect new node to next node
+	temp->next = newNode; // connect new node to previous node
+}
+
+// Print list
+void printLinkedList(Node* head) {
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->num << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* head = NULL;
+
+    while (true) {
+        cout << "Option 1: Insert at tail" << endl;
+        cout << "Option 2: Print linked list" << endl;
+        cout << "Option 3: Insert at any position" << endl;
+        cout << "Option 4: Terminate" << endl;
+
+        int o;
+        cin >> o;
+
+        if (o == 1) {
+            cout << "Enter item: ";
+            int n;
+            cin >> n;
+            insertTail(head, n);
+        } else if (o == 2) {
+            printLinkedList(head);
+        } else if (o == 3) {
+        	int p;
+        	cout << "Enter position: ";
+        	cin >> p;
+        	int n;
+        	cout << "Enter item: ";
+        	cin >> n;
+        	insertAnyPosition(head, p, n);
+        } else if (o == 4) {
+            break;
+        }
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+// insert at any position with head
+class Node {
+public:
+    int num;
+    Node* next;
+
+    Node(int num) {
+        this->num = num;
+        this->next = NULL;
+    }
+};
+
+// Insert at tail
+void insertTail(Node*& head, int n) {
+    Node* newNode = new Node(n);
+    if (head == NULL) { // Linked list is empty
+        head = newNode; // Set new node is head or first number
+        return;
+    }
+
+    Node* temp = head;
+    while (temp->next != NULL) {
+        temp = temp->next; // Now head in last
+    }
+
+    temp->next = newNode; // Set new node at last
+}
+
+// Insert at any position
+void insertAnyPosition(Node* head, int p, int n) {
+	Node* newNode = new Node(n);
+	Node* temp = head;
+	for (int i = 1; i <= p - 1; i++) {
+		temp = temp->next; // Move temp to p
+	}
+
+	newNode->next = temp->next; // connect new node to next node
+	temp->next = newNode; // connect new node to previous node
+}
+
+// Insert at head
+void insertHead(Node*& head, int n) {
+	Node* newNode = new Node(n);
+	newNode->next = head; // make new node as head
+	head = newNode; // now head is new node
+}
+
+// Print list
+void printLinkedList(Node* head) {
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->num << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* head = NULL;
+
+    while (true) {
+        cout << "Option 1: Insert at tail" << endl;
+        cout << "Option 2: Print linked list" << endl;
+        cout << "Option 3: Insert at any position" << endl;
+        cout << "Option 4: Terminate" << endl;
+
+        int o;
+        cin >> o;
+
+        if (o == 1) {
+            cout << "Enter item: ";
+            int n;
+            cin >> n;
+            insertTail(head, n);
+        } else if (o == 2) {
+            printLinkedList(head);
+        } else if (o == 3) {
+        	int p;
+        	cout << "Enter position: ";
+        	cin >> p;
+        	int n;
+        	cout << "Enter item: ";
+        	cin >> n;
+        	if (p == 0) { // If insert item in head
+        		insertHead(head, n);
+        	} else {
+        		insertAnyPosition(head, p, n);
+        	}
+        } else if (o == 4) {
+            break;
+        }
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
+// insert at any position with head - with option 
+class Node {
+public:
+    int num;
+    Node* next;
+
+    Node(int num) {
+        this->num = num;
+        this->next = NULL;
+    }
+};
+
+// Insert at tail
+void insertTail(Node*& head, int n) {
+    Node* newNode = new Node(n);
+    if (head == NULL) { // Linked list is empty
+        head = newNode; // Set new node is head or first number
+        return;
+    }
+
+    Node* temp = head;
+    while (temp->next != NULL) {
+        temp = temp->next; // Now head in last
+    }
+
+    temp->next = newNode; // Set new node at last
+}
+
+// Insert at any position
+void insertAnyPosition(Node* head, int p, int n) {
+	Node* newNode = new Node(n);
+	Node* temp = head;
+	for (int i = 1; i <= p - 1; i++) {
+		temp = temp->next; // Move temp to p
+	}
+
+	newNode->next = temp->next; // connect new node to next node
+	temp->next = newNode; // connect new node to previous node
+}
+
+// Insert at head
+void insertHead(Node*& head, int n) {
+	Node* newNode = new Node(n);
+	newNode->next = head; // make new node as head
+	head = newNode; // now head is new node
+}
+
+// Print list
+void printLinkedList(Node* head) {
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->num << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* head = NULL;
+
+    while (true) {
+        cout << "Option 1: Insert at tail" << endl;
+        cout << "Option 2: Print linked list" << endl;
+        cout << "Option 3: Insert at any position" << endl;
+        cout << "Option 4: Insert at head" << endl;
+        cout << "Option 5: Terminate" << endl;
+
+        int o;
+        cin >> o;
+
+        if (o == 1) {
+            cout << "Enter item: ";
+            int n;
+            cin >> n;
+            insertTail(head, n);
+        } else if (o == 2) {
+            printLinkedList(head);
+        } else if (o == 3) {
+        	int p;
+        	cout << "Enter position: ";
+        	cin >> p;
+        	int n;
+        	cout << "Enter item: ";
+        	cin >> n;
+        	if (p == 0) { // If insert item in head
+        		insertHead(head, n);
+        	} else {
+        		insertAnyPosition(head, p, n);
+        	}
+      	} else if (o == 4) {
+      	    int n;
+      	    cout << "Enter item: ";
+      	    cin >> n;
+      		insertHead(head, n);
+      	} else if (o == 5) {
+            break;
+        }
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+// delete item from list except head
+class Node {
+public:
+    int num;
+    Node* next;
+
+    Node(int num) {
+        this->num = num;
+        this->next = NULL;
+    }
+};
+
+// Insert at tail
+void insertTail(Node*& head, int n) {
+    Node* newNode = new Node(n);
+    if (head == NULL) { // Linked list is empty
+        head = newNode; // Set new node is head or first number
+        return;
+    }
+
+    Node* temp = head;
+    while (temp->next != NULL) {
+        temp = temp->next; // Now head in last
+    }
+
+    temp->next = newNode; // Set new node at last
+}
+
+// Insert at any position
+void insertAnyPosition(Node* head, int p, int n) {
+	Node* newNode = new Node(n);
+	Node* temp = head;
+	for (int i = 1; i <= p - 1; i++) {
+		temp = temp->next; // Move temp to p
+	}
+
+	newNode->next = temp->next; // connect new node to next node
+	temp->next = newNode; // connect new node to previous node
+}
+
+// Insert at head
+void insertHead(Node*& head, int n) {
+	Node* newNode = new Node(n);
+	newNode->next = head; // make new node as head
+	head = newNode; // now head is new node
+}
+
+// Delete a node
+void deleteItem(Node* head, int p) {
+	Node* temp = head;
+	for (int i = 1; i <= p - 1; i++) {
+		temp = temp->next;
+	}
+
+	Node* nodeDelete = temp->next;
+	temp->next = temp->next->next;
+	delete nodeDelete;
+}
+
+// Print list
+void printLinkedList(Node* head) {
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->num << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* head = NULL;
+
+    while (true) {
+        cout << "Option 1: Insert at tail" << endl;
+        cout << "Option 2: Print linked list" << endl;
+        cout << "Option 3: Insert at any position" << endl;
+        cout << "Option 4: Delete item" << endl;
+        cout << "Option 5: Terminate" << endl;
+
+        int o;
+        cin >> o;
+
+        if (o == 1) {
+            cout << "Enter item: ";
+            int n;
+            cin >> n;
+            insertTail(head, n);
+        } else if (o == 2) {
+            printLinkedList(head);
+        } else if (o == 3) {
+        	int p;
+        	cout << "Enter position: ";
+        	cin >> p;
+        	int n;
+        	cout << "Enter item: ";
+        	cin >> n;
+        	if (p == 0) { // If insert item in head
+        		insertHead(head, n);
+        	} else {
+        		insertAnyPosition(head, p, n);
+        	}
+        } else if (o == 4) {
+        	int p;
+        	cout << "Enter position: ";
+        	cin >> p;
+        	deleteItem(head, p);
+        } else if (o == 5) {
+            break;
+        }
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+// delete item from list with head
+class Node {
+public:
+    int num;
+    Node* next;
+
+    Node(int num) {
+        this->num = num;
+        this->next = NULL;
+    }
+};
+
+// Insert at tail
+void insertTail(Node*& head, int n) {
+    Node* newNode = new Node(n);
+    if (head == NULL) { // Linked list is empty
+        head = newNode; // Set new node is head or first number
+        return;
+    }
+
+    Node* temp = head;
+    while (temp->next != NULL) {
+        temp = temp->next; // Now head in last
+    }
+
+    temp->next = newNode; // Set new node at last
+}
+
+// Insert at any position
+void insertAnyPosition(Node* head, int p, int n) {
+	Node* newNode = new Node(n);
+	Node* temp = head;
+	for (int i = 1; i <= p - 1; i++) {
+		temp = temp->next; // Move temp to p
+	}
+
+	newNode->next = temp->next; // connect new node to next node
+	temp->next = newNode; // connect new node to previous node
+}
+
+// Insert at head
+void insertHead(Node*& head, int n) {
+	Node* newNode = new Node(n);
+	newNode->next = head; // make new node as head
+	head = newNode; // now head is new node
+}
+
+// Delete a node
+void deleteItem(Node* head, int p) {
+	Node* temp = head;
+	for (int i = 1; i <= p - 1; i++) {
+		temp = temp->next;
+	}
+
+	Node* nodeDelete = temp->next; // Store delete node in another node
+	temp->next = temp->next->next;
+	delete nodeDelete;
+}
+
+// Delete head
+void deleteHead(Node*& head) {
+	Node* nodeDelete = head; // Store delete node in another node
+	head = head->next; // Set head
+	delete nodeDelete;
+}
+
+// Print list
+void printLinkedList(Node* head) {
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->num << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* head = NULL;
+
+    while (true) {
+        cout << "Option 1: Insert at tail" << endl;
+        cout << "Option 2: Print linked list" << endl;
+        cout << "Option 3: Insert at any position" << endl;
+        cout << "Option 4: Delete item" << endl;
+        cout << "Option 5: Terminate" << endl;
+
+        int o;
+        cin >> o;
+
+        if (o == 1) {
+            cout << "Enter item: ";
+            int n;
+            cin >> n;
+            insertTail(head, n);
+        } else if (o == 2) {
+            printLinkedList(head);
+        } else if (o == 3) {
+        	int p;
+        	cout << "Enter position: ";
+        	cin >> p;
+        	int n;
+        	cout << "Enter item: ";
+        	cin >> n;
+        	if (p == 0) { // If insert item in head
+        		insertHead(head, n);
+        	} else {
+        		insertAnyPosition(head, p, n);
+        	}
+        } else if (o == 4) {
+        	int p;
+        	cout << "Enter position: ";
+        	cin >> p;
+        	if (p == 0) {
+        		deleteHead(head);
+        	} else {
+        		deleteItem(head, p);
+        	}
+        } else if (o == 5) {
+            break;
+        }
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+// delete item from list with head - with option
+class Node {
+public:
+    int num;
+    Node* next;
+
+    Node(int num) {
+        this->num = num;
+        this->next = NULL;
+    }
+};
+
+// Insert at tail
+void insertTail(Node*& head, int n) {
+    Node* newNode = new Node(n);
+    if (head == NULL) { // Linked list is empty
+        head = newNode; // Set new node is head or first number
+        return;
+    }
+
+    Node* temp = head;
+    while (temp->next != NULL) {
+        temp = temp->next; // Now head in last
+    }
+
+    temp->next = newNode; // Set new node at last
+}
+
+// Insert at any position
+void insertAnyPosition(Node* head, int p, int n) {
+	Node* newNode = new Node(n);
+	Node* temp = head;
+	for (int i = 1; i <= p - 1; i++) {
+		temp = temp->next; // Move temp to p
+	}
+
+	newNode->next = temp->next; // connect new node to next node
+	temp->next = newNode; // connect new node to previous node
+}
+
+// Insert at head
+void insertHead(Node*& head, int n) {
+	Node* newNode = new Node(n);
+	newNode->next = head; // make new node as head
+	head = newNode; // now head is new node
+}
+
+// Delete a node
+void deleteItem(Node* head, int p) {
+	Node* temp = head;
+	for (int i = 1; i <= p - 1; i++) {
+		temp = temp->next;
+	}
+
+	Node* nodeDelete = temp->next; // Store delete node in another node
+	temp->next = temp->next->next;
+	delete nodeDelete;
+}
+
+// Delete head
+void deleteHead(Node*& head) {
+	Node* nodeDelete = head; // Store delete node in another node
+	head = head->next; // Set head
+	delete nodeDelete;
+}
+
+// Print list
+void printLinkedList(Node* head) {
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->num << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* head = NULL;
+
+    while (true) {
+        cout << "Option 1: Insert at tail" << endl;
+        cout << "Option 2: Print linked list" << endl;
+        cout << "Option 3: Insert at any position" << endl;
+        cout << "Option 4: Insert at head" << endl;
+        cout << "Option 5: Delete item" << endl;
+        cout << "Option 6: Delete head" << endl;
+        cout << "Option 7: Terminate" << endl;
+
+        int o;
+        cin >> o;
+
+        if (o == 1) {
+            cout << "Enter item: ";
+            int n;
+            cin >> n;
+            insertTail(head, n);
+        } else if (o == 2) {
+            printLinkedList(head);
+        } else if (o == 3) {
+        	int p;
+        	cout << "Enter position: ";
+        	cin >> p;
+        	int n;
+        	cout << "Enter item: ";
+        	cin >> n;
+        	if (p == 0) { // If insert item in head
+        		insertHead(head, n);
+        	} else {
+        		insertAnyPosition(head, p, n);
+        	}
+        } else if (o == 4) {
+      	    int n;
+      	    cout << "Enter item: ";
+      	    cin >> n;
+      		insertHead(head, n);
+		} else if (o == 5) {
+        	int p;
+        	cout << "Enter position: ";
+        	cin >> p;
+        	if (p == 0) {
+        		deleteHead(head);
+        	} else {
+        		deleteItem(head, p);
+        	}
+        } else if (o == 6) {
+        	deleteHead(head);
+        } else if (o == 7) {
+            break;
+        }
+    }
+
+    return 0;
 }
