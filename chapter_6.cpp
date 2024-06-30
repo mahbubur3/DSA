@@ -703,9 +703,6 @@ int main() {
 
 
 
-
-
-
 // delete item from list with head - with option
 class Node {
 public:
@@ -1067,3 +1064,91 @@ int main() {
 	return 0;
 }
 
+
+
+
+
+// EXERCISE
+class Node {
+public:
+    int num;
+    Node* next;
+
+    Node(int num) {
+        this->num = num;
+        this->next = NULL;
+    }
+};
+
+void insertTail(Node*& head, int n) {
+    Node* newNode = new Node(n);
+    if (head == NULL) {
+        head = newNode;
+        return;
+    }
+    
+    Node* temp = head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+}
+
+void deleteTail(Node* head) {
+    Node* temp = head;
+    while (temp->next->next != NULL) {
+        temp = temp->next;
+    }
+    delete temp->next;
+    temp->next = NULL;
+}
+
+void listLength(Node* head) {
+    Node* temp = head;
+    int l = 0;
+    while (temp != NULL) {
+        l++;
+        temp = temp->next;
+    }
+    cout << l << endl;
+}
+
+void printList(Node* head) {
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->num << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* head = NULL;
+
+    while (true) {
+        cout << "Option 1: Insert tail" << endl;
+        cout << "Option 2: Delete tail" << endl;
+        cout << "Option 3: Show the list" << endl;
+        cout << "Option 4: Show the list length" << endl;
+        cout << "Option 5: Terminate" << endl;
+
+        int o;
+        cin >> o;
+        if (o == 1) {
+            int n;
+            cout << "Enter item: ";
+            cin >> n;
+            insertTail(head, n);
+        } else if (o == 2) {
+            deleteTail(head);
+        } else if (o == 3) {
+            printList(head);
+        } else if (o == 4) {
+            listLength(head);
+        } else if (o == 5) {
+            break;
+        }
+    }
+
+    return 0;
+}
