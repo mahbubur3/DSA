@@ -3,7 +3,7 @@
 using namespace std;
 
 // Create linked list
-class Node {
+/* class Node {
 public:
 	int num;
 	Node* next;
@@ -39,13 +39,13 @@ int main() {
 	printList(head);
 
 	return 0;
-}
+} */ 
 
 
 
 
 // Operations
-class Node {
+/* class Node {
 public:
 	int num;
 	Node* next;
@@ -118,7 +118,7 @@ int main() {
 	}
 
 	return 0;
-}
+} */
 
 
 
