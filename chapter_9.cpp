@@ -198,17 +198,27 @@ void deleteItem(Node* head, int p) {
     delete nodeDelete;
 }
 
-void deleteTail(Node*& tail) {
+void deleteTail(Node*& head, Node*& tail) {
     Node* deleteNode = tail;
     tail = tail->prev;
     delete deleteNode;
+
+    if (tail == NULL) {
+        head = NULL;
+        return;
+    }
     tail->next = NULL;
 }
 
-void deleteHead(Node*& head) {
+void deleteHead(Node*& head, Node*& tail) {
     Node* deleteNode = head;
     head = head->next;
     delete deleteNode;
+
+    if (head == NULL) { // if head now in null 
+        tail = NULL;
+        return;
+    }
     head->prev = NULL;
 } 
 
@@ -259,9 +269,9 @@ int main() {
     if (p >= listLength(head)) {
         cout << "invalid" << endl;
     } else if (p == 0) {
-        deleteHead(head);
+        deleteHead(head, tail);
     } else if (p == listLength(head) - 1) {
-        deleteTail(tail);
+        deleteTail(head, tail);
     } else {
         deleteItem(head, p);
     }
