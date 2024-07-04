@@ -159,3 +159,158 @@ int main() {
 
 	return 0;
 }
+
+
+
+
+
+// Operation functions
+/* int main() {
+	// list<int> l = {10, 20, 30, 10, 40, 10, 50};
+	// l.remove(10); // Remove all 10
+	// l.sort(); // Sort ascending
+	// l.sort(greater<int>()); // Sort dscending
+	// for (int i : l) {
+	// 	cout << i << " ";
+	// }
+
+
+	// Remove duplicate using unique(). do not work if list is not sorted
+	// list<int> l = {20, 10, 50, 20, 30, 10, 40, 10};
+	// l.sort(); // work also dscending order
+	// l.unique();
+	// for (int i : l) {
+	// 	cout << i << " ";
+	// }
+
+
+	// Reverse list
+	list<int> l = {20, 10, 50, 20};
+	l.reverse();
+	for (int i : l) {
+		cout << i << " ";
+	}
+
+	return 0;
+} */
+
+
+
+// Element access
+/* int main() {
+	list<int> l = {10, 20, 30, 40, 50};
+	// cout << l.front(); // First element
+	// cout << l.back(); // Last element
+	cout << *next(l.begin(), 2) << endl; // next will return iterator so we need to dereference
+
+	return 0;
+} */
+
+
+
+
+// Reverse singly linked list (recursively)
+/*class Node {
+public:
+	int num;
+	Node* next;
+
+	Node(int num) {
+		this->num = num;
+		this->next = NULL;
+	}
+};
+
+void makeReverse(Node*& head, Node* current) {
+	if (current->next == NULL) {
+		head = current;
+		return;
+	}
+	makeReverse(head, current->next);
+	current->next->next = current;
+	current->next = NULL;
+}
+
+void printList(Node* head) {
+	Node* temp = head;
+	while (temp != NULL) {
+		cout << temp->num << " ";
+		temp = temp->next;
+	}
+	cout << endl;
+}
+
+int main() {
+	Node* head = new Node(1);
+	Node* a = new Node(2);
+	Node* b = new Node(3);
+	Node* c = new Node(4);
+	Node* d = new Node(5);
+	
+	head->next = a;
+	a->next = b;
+	b->next = c;
+	c->next = d;
+
+	makeReverse(head, head);
+	printList(head);
+    
+    return 0;
+}*/
+
+
+
+
+
+// Reverse doubly linked list (Two pointers)
+class Node {
+public:
+    int num;
+    Node* next;
+    Node* prev;
+
+    Node(int num) {
+        this->num = num;
+        this->next = NULL;
+        this->prev = NULL;
+    }
+};
+
+void makeReverse(Node* head, Node* tail) {
+	Node* i = head;
+	Node* j = tail;
+	while (i != j && i->next != j) {
+		swap(i->num, j->num);
+		i = i->next;
+		j = j->prev;
+	}
+}
+
+void printList(Node* head) {
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->num << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* head = new Node(10);
+    Node* a = new Node(20);
+    Node* b = new Node(30);
+    Node* c = new Node(40);
+    Node* tail = c;
+    
+    head->next = a;
+    a->prev = head;
+    a->next = b;
+    b->prev = a;
+    b->next = c;
+    c->prev = b;
+    
+    makeReverse(head, tail);
+    printList(head);
+
+    return 0;
+}
