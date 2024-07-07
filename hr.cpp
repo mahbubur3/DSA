@@ -4,6 +4,7 @@
 
 using namespace std;
 
+// ASSIGNMENT 01
 int main() {
     int n, q;
     cin >> n >> q;
@@ -222,4 +223,493 @@ int main() {
     }
     
     return 0;
+}
+
+
+
+
+
+// ASSIGNMENT 03
+/ Problem 1
+class Node {
+public:
+	int num;
+	Node* next;
+
+	Node(int num) {
+		this->num = num;
+		this->next = NULL;
+	}
+};
+
+void insertTail(Node*& head, Node*& tail, int n) {
+    Node* newNode = new Node(n);
+    if (head == NULL) {
+        head = newNode;
+        tail = newNode;
+        return;
+    }
+	tail->next = newNode;
+	tail = newNode;
+}
+
+void findDifference(Node* head) {
+	int mn = INT_MAX, mx = INT_MIN;
+	Node* temp = head;
+	while (temp != NULL) {
+		if (temp->num < mn) {
+			mn = temp->num;
+		}
+		if (temp->num > mx) {
+			mx = temp->num;
+		}
+		temp = temp->next;
+	}
+	cout << mx - mn << endl;
+}
+
+int main() {
+	Node* head = NULL;
+	Node* tail = NULL;
+
+	int n;
+	while (true) {
+		cin >> n;
+		if (n == -1) {
+			break;
+		}
+		insertTail(head, tail, n);
+	}
+
+	findDifference(head);
+
+	return 0;
+}
+
+
+
+
+
+
+// Problem 2
+class Node {
+public:
+	int num;
+	Node* next;
+
+	Node(int num) {
+		this->num = num;
+		this->next = NULL;
+	}
+};
+
+void searchItem(Node* head, int x) {
+	bool isFound = false;
+	int i = 0;
+	Node* temp = head;
+	while (temp != NULL) {
+		if (temp->num == x) {
+			isFound = true;
+			break;
+		}
+		temp = temp->next;
+		i++;
+	}
+
+	if (isFound) {
+		cout << i << endl;
+	} else {
+		cout << -1 << endl;
+	}
+}
+
+void insertTail(Node*& head, Node*& tail, int n) {
+    Node* newNode = new Node(n);
+    if (head == NULL) {
+        head = newNode;
+        tail = newNode;
+        return;
+    }
+	tail->next = newNode;
+	tail = newNode;
+}
+
+int main() {
+	int q;
+	cin >> q;
+	while (q--) {
+        Node* head = NULL;
+	    Node* tail = NULL;
+
+		int n;
+		while (true) {
+			cin >> n;
+			if (n == -1) {
+				break;
+			}
+			insertTail(head, tail, n);
+		}
+
+		int x;
+		cin >> x;
+		searchItem(head, x);
+	}
+
+	return 0;
+}
+
+
+
+
+// problem 3
+class Node {
+public:
+	int num;
+	Node* next;
+
+	Node(int num) {
+		this->num = num;
+		this->next = NULL;
+	}
+};
+
+void insertTail(Node*& head, Node*& tail, int n) {
+    Node* newNode = new Node(n);
+    if (head == NULL) {
+        head = newNode;
+        tail = newNode;
+        return;
+    }
+	tail->next = newNode;
+	tail = newNode;
+}
+
+void sameToSame(Node* head, Node* head2) {
+    vector<int> v;
+    Node* temp = head;
+    while (temp != NULL) {
+        v.push_back(temp->num);
+        temp = temp->next;
+    }
+
+    vector<int> v2;
+    Node* temp2 = head2;
+    while (temp2 != NULL) {
+        v2.push_back(temp2->num);
+        temp2 = temp2->next;
+    }
+
+    if (v == v2) {
+        cout << "yes" << endl;
+    } else {
+        cout << "no" << endl;
+    }
+}
+
+int main() {
+    Node* head = NULL;
+    Node* tail = NULL;
+    Node* head2 = NULL;
+    Node* tail2 = NULL;
+
+    int n;
+    while (true) {
+        cin >> n;
+        if (n == -1) {
+            break;
+        }
+        insertTail(head, tail, n);
+    }
+
+    int n2;
+    while (true) {
+        cin >> n2;
+        if (n2 == -1) {
+            break;
+        }
+        insertTail(head2, tail2, n2);
+    }
+
+    sameToSame(head, head2);
+
+	return 0;
+}
+
+
+
+// Another way
+class Node {
+public:
+    int num;
+    Node* next;
+
+    Node(int num) {
+        this->num = num;
+        this->next = NULL;
+    }
+};
+
+void insertTail(Node*& head, Node*& tail, int n) {
+    Node* newNode = new Node(n);
+    if (head == NULL) {
+        head = newNode;
+        tail = newNode;
+        return;
+    }
+    tail->next = newNode;
+    tail = newNode;
+}
+
+bool isSame = true;
+void sameToSame(Node* head, Node* head2) {
+    Node* temp = head;
+    int len = 0;
+    while (temp != NULL) {
+        len++;
+        temp = temp->next;
+    }
+
+    Node* temp2 = head2;
+    int len2 = 0;
+    while (temp2 != NULL) {
+        len2++;
+        temp2 = temp2->next;
+    }
+
+    if (len != len2) {
+        isSame = false;
+    }
+
+    temp = head;
+    temp2 = head2;
+    while (temp != NULL && temp2 != NULL) {
+        if (temp->num != temp2->num) {
+            isSame = false;
+        }
+        temp = temp->next;
+        temp2 = temp2->next;
+    }
+}
+
+int main() {
+    Node* head = NULL;
+    Node* tail = NULL;
+    Node* head2 = NULL;
+    Node* tail2 = NULL;
+
+    int n;
+    while (true) {
+        cin >> n;
+        if (n == -1) {
+            break;
+        }
+        insertTail(head, tail, n);
+    }
+
+    int n2;
+    while (true) {
+        cin >> n2;
+        if (n2 == -1) {
+            break;
+        }
+        insertTail(head2, tail2, n2);
+    }
+
+    sameToSame(head, head2);
+    if (isSame) {
+        cout << "YES" << endl;
+    } else {
+        cout << "NO" << endl;
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+// Problem 4
+class Node {
+public:
+    int num;
+    Node* next;
+
+    Node(int num) {
+        this->num = num;
+        this->next = NULL;
+    }
+};
+
+void insertHead(Node*& head, Node*& tail, int n) {
+    Node* newNode = new Node(n);
+    if (head == NULL) {
+        head = newNode;
+        tail = newNode;
+        return;
+    }
+    newNode->next = head;
+    head = newNode;
+}
+
+void insertTail(Node*& head, Node*& tail, int n) {
+    Node* newNode = new Node(n);
+    if (head == NULL) {
+        head = newNode;
+        tail = newNode;
+        return;
+    }
+    tail->next = newNode;
+    tail = newNode;
+}
+
+void deleteItem(Node*& head, Node*& tail, int n) {
+    if (head == NULL) {
+        return;
+    }
+
+    if (n == 0) {
+        Node* nodeDelete = head;
+        head = head->next;
+        if (head == NULL) {
+            tail = NULL;
+        }
+        delete nodeDelete;
+        return;
+    }
+
+    Node* temp = head;
+    for (int i = 0; i < n - 1; i++) {
+        if (temp->next == NULL) {
+            return;
+        }
+        temp = temp->next;
+    }
+
+    if (temp->next == NULL) {
+        return;
+    }
+
+    Node* nodeDelete = temp->next;
+    temp->next = temp->next->next;
+    if (temp->next == NULL) {
+        tail = temp;
+    }
+    delete nodeDelete;
+}
+
+void deleteHead(Node*& head, Node*& tail) {
+    if (head == NULL) {
+        return;
+    }
+
+    Node* nodeDelete = head;
+    head = head->next;
+    if (head == NULL) {
+        tail = NULL;
+    }
+    delete nodeDelete;
+}
+
+void printList(Node* head) {
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->num << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* head = NULL;
+    Node* tail = NULL;
+
+    int q;
+    cin >> q;
+    while (q--) {
+        int x, v;
+        cin >> x >> v;
+        if (x == 0) {
+            insertHead(head, tail, v);
+        } else if (x == 1) {
+            insertTail(head, tail, v);
+        } else if (x == 2) {
+            deleteItem(head, tail, v);
+        }
+        printList(head);
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+// Problem 5
+class Node {
+public:
+	int num;
+	Node* next;
+
+	Node(int num) {
+		this->num = num;
+		this->next = NULL;
+	}
+};
+
+void insertTail(Node*& head, Node*& tail, int n) {
+	Node* newNode = new Node(n);
+	if (head == NULL) {
+		head = newNode;
+		tail = newNode;
+		return;
+	}
+	tail->next = newNode;
+	tail = newNode;
+}
+
+
+void deleteDuplicate(Node* head) {
+    for (Node* i = head; i != NULL; i = i->next) {
+        for (Node* j = i; j->next != NULL; ) {
+            if (i->num == j->next->num) {
+                Node* deleteNode = j->next;
+                j->next = j->next->next;
+                delete deleteNode;
+            } else {
+                j = j->next;
+            }
+        }
+    }
+}
+
+void printList(Node* head) {
+	Node* temp = head;
+	while (temp != NULL) {
+		cout << temp->num << " ";
+		temp = temp->next;
+	}
+	cout << endl;
+}
+
+int main() {
+	Node* head = NULL;
+	Node* tail = NULL;
+
+	int n;
+	while (true) {
+		cin >> n;
+		if (n == -1) {
+			break;
+		}
+		insertTail(head, tail, n);
+	}
+	
+	deleteDuplicate(head);
+	printList(head);
+	
+	return 0;
 }
