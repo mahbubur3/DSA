@@ -713,3 +713,349 @@ int main() {
 	
 	return 0;
 }
+
+
+
+
+/* Mid-Exam */
+// Problem 01
+int main() {
+    list<int> myList;
+    int n;
+    while (true) {
+        cin >> n;
+        if (n == -1) {
+            break;
+        }
+        myList.push_back(n);
+    }
+    
+    myList.sort();
+    myList.unique();
+    
+    for (int i : myList) {
+        cout << i << " ";
+    }
+
+    return 0;
+}
+
+
+
+
+
+// Problem 02
+class Node {
+public:
+    int num;
+    Node* next;
+    Node* prev;
+
+    Node(int num) {
+        this->num = num;
+        this->next = NULL;
+        this->prev = NULL;
+    }
+};
+
+void insertTail(Node*& head, Node*& tail, int v) {
+    Node* newNode = new Node(v);
+    if (tail == NULL) {
+        head = newNode;
+        tail = newNode;
+        return;
+    }
+    tail->next = newNode;
+    newNode->prev = tail;
+    tail = tail->next;
+}
+
+bool isPalindrome = true;
+void checkPalindrome(Node* head, Node* tail) {
+    Node* i = head;
+    Node* j = tail;
+    while (i != j && i->next != j) {
+        if (i->num != j->num) {
+            isPalindrome = false;
+            return;
+        }
+        i = i->next;
+        j = j->prev;
+    }
+    if (i->num != j->num) {
+        isPalindrome =  false;
+        return;
+    }
+    i = i->next;
+    j = j->prev;
+}
+
+int main() {
+    Node* head = NULL;
+    Node* tail = NULL;
+
+    int v;
+    while (true) {
+        cin >> v;
+        if (v == -1) {
+            break;
+        }
+        insertTail(head, tail, v);
+    }
+    
+    checkPalindrome(head, tail);
+    if (isPalindrome) {
+        cout << "YES" << endl;
+    } else {
+        cout << "NO" << endl;
+    }
+
+    return 0;
+}
+
+
+
+
+// Problem 04
+class Node {
+public:
+    int num;
+    Node* next;
+    Node* prev;
+    Node(int num) {
+        this->num = num;
+        this->next = NULL;
+        this->prev = NULL;
+    }
+};
+
+void insertHead(Node*& head, Node*& tail, int v) {
+    Node* newNode = new Node(v);
+    if (head == NULL) {
+        head = newNode;
+        tail = newNode;
+        return;
+    }
+    newNode->next = head;
+    head->prev = newNode;
+    head = newNode;
+}
+
+void insertTail(Node*& head, Node*& tail, int v) {
+    Node* newNode = new Node(v);
+    if (tail == NULL) {
+        head = newNode;
+        tail = newNode;
+        return;
+    }
+    tail->next = newNode;
+    newNode->prev = tail;
+    tail = tail->next;
+}
+
+void insertPosition(Node* head, int x, int v) {
+    Node* newNode = new Node(v);
+    Node* temp = head;
+    for (int i = 1; i <= x - 1; i++) {
+        temp = temp->next;
+    }
+    newNode->next = temp->next;
+    temp->next = newNode;
+    newNode->next->prev = newNode;
+    newNode->prev = temp;
+}
+
+int listLength(Node* head) {
+    int len = 0;
+    Node* temp = head;
+    while (temp != NULL) {
+        len++;
+        temp = temp->next;
+    }
+    return len;
+}
+
+void printList(Node* head) {
+    Node* temp = head;
+    cout << "L -> ";
+    while (temp != NULL) {
+        cout << temp->num << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+void printListReverse(Node* tail) {
+    Node* temp = tail;
+    cout << "R -> ";
+    while (temp != NULL) {
+        cout << temp->num << " ";
+        temp = temp->prev;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* head = NULL;
+    Node* tail = NULL;
+
+    int q;
+    cin >> q;
+    while (q--) {
+        int x, v, flag = 1;
+        cin >> x >> v;
+        if (x > listLength(head)) {
+            flag = 0;
+        } else if (x == 0) {
+            insertHead(head, tail, v);
+        } else if (x == listLength(head)) {
+            insertTail(head, tail, v);
+        } else {
+            insertPosition(head, x, v);
+        }
+        
+        if (flag == 0) {
+            cout << "Invalid" << endl;
+        } else {
+            printList(head);
+            printListReverse(tail);
+        }
+        
+    }
+
+    return 0;
+}
+
+
+
+
+
+// Problem 05
+int main() {
+    list<int> l;
+    
+    int q;
+    cin >> q;
+    while (q--) {
+        int x, v;
+        cin >> x >> v;
+        if (x == 0) {
+            l.push_front(v);
+        } else if (x == 1) {
+            l.push_back(v);
+        } else if (x == 2) {
+            int listLength = l.size();
+            if (v < listLength) {
+                l.erase(next(l.begin(), v));
+            }
+        }
+        
+        cout << "L -> ";
+        for (int i : l) {
+            cout << i << " ";
+        }
+        
+        cout << endl;
+        
+        list<int> l2;
+        l2 = l;
+        l2.reverse();
+
+        cout << "R -> ";
+        for (int i : l2) {
+            cout << i << " ";
+        }
+        
+        cout << endl;
+    }
+    
+    return 0;
+}
+
+
+
+
+
+
+class Node {
+public:
+    string data;
+    Node* next;
+    Node* prev;
+    
+    Node(string data) {
+        this->data = data;
+        this->next = NULL;
+        this->prev = NULL;
+    }
+};
+
+void insertTail(Node*& head, Node*& tail, string address) {
+    Node* newNode = new Node(address);
+    if (tail == NULL) {
+        head = newNode;
+        tail = newNode;
+        return;
+    }
+    tail->next = newNode;
+    newNode->prev = tail;
+    tail = tail->next;
+}
+
+int main() {
+    Node* head = NULL;
+    Node* tail = NULL;
+    
+    string address;
+    while (true) {
+        cin >> address;
+        if (address == "end") {
+            break;
+        }
+        insertTail(head, tail, address);
+    }
+    
+    int q;
+    cin >> q;
+    Node* current = head;
+    while (q--) {
+        string command;
+        cin >> command;
+
+        if (command == "visit") {
+            string siteName;
+            cin >> siteName;
+            
+            Node* temp = head;
+            bool isFound = false;
+            while (temp != NULL) {
+                if (temp->data == siteName) {
+                    isFound = true;
+                    current = temp;
+                    cout << current->data << endl;
+                    break;
+                }
+                temp = temp->next;
+            }
+            if (isFound == false) {
+                cout << "Not Available" << endl;
+            }
+        } else if (command == "next") {
+            if (current->next != NULL) {
+                current = current->next;
+                cout << current->data << endl;
+            } else {
+                cout << "Not Available" << endl;
+            }
+        } else if (command == "prev") {
+            if (current->prev != NULL) {
+                current = current->prev;
+                cout << current->data << endl;
+            } else {
+                cout << "Not Available" << endl;
+            }
+        }
+    }
+    
+    return 0;
+}
