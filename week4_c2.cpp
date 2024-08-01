@@ -14,7 +14,7 @@ public:
 
 		string ans = "";
 		while (!st.empty()) {
-			ans = ans + st.top();
+			ans =+ st.top();
 			st.pop();
 		}
 
@@ -57,3 +57,51 @@ while (true) {
 }
 
 return time;
+
+
+
+
+// 1598. Crawler log folder
+int minOperations(vector<string>& logs) {
+	stack<int> st;
+
+	for (string s : logs) {
+		if (s == "../") {
+			if (!st.empty()) {
+				st.pop();
+			}
+		} else if (s == "./") {
+			continue;
+		} else {
+			st.push(s);
+		}
+	}
+
+	return st.size();
+}
+
+
+
+// 682. Baseball game
+stack<int> st;
+for (string s : operations) {
+	if (s == "+") {
+		int prev = st.top();
+		st.pop();
+		int prev2 = st.top();
+		st.push(prev);
+		st.push(prev + prev2);
+	} else if (s == "D") {
+		st.push(st.top() * 2);
+	} else if (s == "C") {
+		st.pop();
+	} else {
+		st.push(stoi(s));
+	}
+}
+
+int result = 0;
+while (!st.empty()) {
+	result += st.top();
+	st.pop();
+}
