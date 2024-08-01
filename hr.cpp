@@ -1059,3 +1059,232 @@ int main() {
     
     return 0;
 }
+
+
+
+// Assignment 03
+// Number one
+int main() {
+    stack<int> s;
+    queue<int> q;
+
+    int n, m;
+    cin >> n >> m;
+    for (int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+        s.push(x);
+    }
+
+    for (int i = 0; i < m; i++) {
+        int x;
+        cin >> x;
+        q.push(x);
+    }
+
+    bool isSame = true;
+    if (s.size() != q.size()) {
+        isSame = false;
+    } else {
+        while (!s.empty()) {
+            if (s.top() != q.front()) {
+                isSame = false;
+                break;
+            } else {
+                s.pop();
+                q.pop();
+            }
+        }
+    }
+
+    if (isSame) {
+        cout << "YES" << endl;
+    } else {
+        cout << "NO" << endl;
+    }
+
+    return 0;
+}
+
+
+
+
+// Number two
+class MyStack {
+public:
+    list<int> l;
+    void push(int val) {
+        l.push_back(val);
+    }
+    void pop() {
+        l.pop_back();
+    }
+    int top() {
+        return l.back();
+    }
+    int size() {
+        return l.size();
+    }
+    bool empty() {
+        return l.empty();
+    }
+};
+
+class MyQueue {
+public:
+    list<int> l2;
+    void push(int val) {
+        l2.push_back(val);
+    }
+    void pop() {
+        l2.pop_front();
+    }
+    int front() {
+        return l2.front();
+    }
+    int size() {
+        return l2.size();
+    }
+    bool empty() {
+        return l2.empty();
+    }
+};
+
+int main() {
+    MyStack s;
+    MyQueue q;
+
+    int n, m;
+    cin >> n >> m;
+    for (int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+        s.push(x);
+    }
+
+    for (int i = 0; i < m; i++) {
+        int x;
+        cin >> x;
+        q.push(x);
+    }
+
+    bool isSame = true;
+    if (s.size() != q.size()) {
+        isSame = false;
+    } else {
+        while (!s.empty()) {
+            if (s.top() != q.front()) {
+                isSame = false;
+                break;
+            } else {
+                s.pop();
+                q.pop();
+            }
+        }
+    }
+
+    if (isSame) {
+        cout << "YES" << endl;
+    } else {
+        cout << "NO" << endl;
+    }
+
+    return 0;
+}
+
+
+
+
+
+// Number three
+int main() {
+    int q;
+    cin >> q;
+    while (q--) {
+        string s;
+        cin >> s;
+        
+        stack<char> st;
+
+        for (char c : s) {
+            if (!st.empty() && ((c == '0' && st.top() == '1') || (c == '1' && st.top() == '0'))) {
+                st.pop();
+            } else {
+                st.push(c);
+            }
+        }
+
+        if (st.empty()) {
+            cout << "YES" << endl;
+        } else {
+            cout << "NO" << endl;
+        }
+    }
+    
+    return 0;
+}
+
+
+
+
+// Problem four
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    queue<string> que;
+
+    int q;
+    cin >> q;
+    while (q--) {
+        int com;
+        cin >> com;
+        if (com == 0) {
+            string name;
+            cin >> name;
+            que.push(name);
+        } else if (com == 1) {
+            if (que.empty()) {
+                cout << "Invalid" << '\n';
+            } else {
+                cout << que.front() << '\n';
+                que.pop();
+            }
+        }
+
+    }
+
+    return 0;
+}
+
+
+
+
+
+// Problem five
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        string s;
+        cin >> s;
+        
+        stack<char> st;
+
+        for (char c : s) {
+            if (!st.empty() && (c == '1' && st.top() == '0')) {
+                st.pop();
+            } else {
+                st.push(c);
+            }
+        }
+
+        if (st.empty()) {
+            cout << "YES" << endl;
+        } else {
+            cout << "NO" << endl;
+        }
+    }
+    
+    return 0;
+}
