@@ -1,15 +1,15 @@
 // Knapsack
-int knapsack(int n, int w[], int v[], int W) {
-	if (n == 0 || w == 0) {
+int knapsack(int n, int weight[], int value[], int W) {
+	if (n == 0 || weight == 0) {
 		return 0;
 	}
 
-	if (w[n - 1] <= W) {
-		int op1 = knapsack(n - 1, w, v, W - w[n - 1]) + v[n - 1];
-		int op2 = knapsack(n - 1, w, v, W);
+	if (weight[n - 1] <= W) {
+		int op1 = knapsack(n - 1, weight, value, W - weight[n - 1]) + value[n - 1];
+		int op2 = knapsack(n - 1, weight, value, W);
 		return max(op1, op2);
 	} else {
-		int op2 = knapsack(n - 1, w, v, W);
+		int op2 = knapsack(n - 1, weight, value, W);
 		return op2;
 	}
 }
@@ -18,19 +18,19 @@ int main() {
 	int n;
 	cin >> n;
 
-	int w[n], v[n];
+	int weight[n], value[n];
 	for (int i = 0; i < n; i++) {
-		cin >> w[i];
+		cin >> weight[i];
 	}
 
 	for (int i = 0; i < n; i++) {
-		cin >> v[i];
+		cin >> value[i];
 	}
 
 	int W;
 	cin >> W;
 
-	cout << knapsack(n, w, v, W) << endl;
+	cout << knapsack(n, weight, value, W) << endl;
 
 	return 0;
 }
@@ -39,25 +39,26 @@ int main() {
 
 
 // Knapsack - Optimize (Top down approach)
-const int maxN = 1000, maxW = 1000;
-int dp[maxN][maxW];
+int dp[1000][1000];
 
-int knapsack(int n, int w[], int v[], int W) {
-	if (n == 0 || w == 0) {
+int knapsack(int n, int weight[], int value[], int W) {
+	if (n == 0 || weight == 0) {
 		return 0;
 	}
 
-	if (dp[n][w] != -1) {
+	if (dp[n][weight] != -1) {
 		return dp[n][W];
 	}
 
-	if (w[n - 1] <= W) {
-		int op1 = knapsack(n - 1, w, v, W - w[n - 1]) + v[n - 1];
-		int op2 = knapsack(n - 1, w, v, W);
+	if (weight[n - 1] <= W) {
+		int op1 = knapsack(n - 1, weight, value, W - weight[n - 1]) + value[n - 1];
+		int op2 = knapsack(n - 1, weight, value, W);
+
 		return dp[n][W] = max(op1, op2);
 	} else {
-		int op2 = knapsack(n - 1, w, v, W);
-		return dp[n][w] = op2;
+		int op2 = knapsack(n - 1, weight, value, W);
+
+		return dp[n][weight] = op2;
 	}
 }
 
@@ -65,13 +66,13 @@ int main() {
 	int n;
 	cin >> n;
 
-	int w[n], v[n];
+	int weight[n], value[n];
 	for (int i = 0; i < n; i++) {
-		cin >> w[i];
+		cin >> weight[i];
 	}
 
 	for (int i = 0; i < n; i++) {
-		cin >> v[i];
+		cin >> value[i];
 	}
 
 	int W;
@@ -83,7 +84,7 @@ int main() {
 		}
 	}
 
-	cout << knapsack(n, w, v, W) << endl;
+	cout << knapsack(n, weight, value, W) << endl;
 
 	return 0;
 }
