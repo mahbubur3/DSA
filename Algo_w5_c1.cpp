@@ -4,13 +4,11 @@ public:
 	int dp[50];
 
 	int fibo(int n) {
-		if (n <= 2) {
+		if (n <= 2) 
 			return n;
-		}
 
-		if (dp[n] != -1) {
+		if (dp[n] != -1) 
 			return dp[n];
-		}
 
 		return dp[n] = fibo(n - 1) + fibo(n - 2);
 	}
@@ -66,13 +64,13 @@ ll dp[100005];
 
 bool func(ll n, ll input) {
     if (n > input)
-        return false;
+    	return false;
 
     if (n == input)
-        return true;
+    	return true;
 
     if (dp[n] != -1)
-        return dp[n];
+    	return dp[n];
 
     return dp[n] = func(n * 10, input) || func(n * 20, input);
 }
