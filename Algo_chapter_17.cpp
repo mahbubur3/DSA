@@ -46,7 +46,7 @@ int knapsack(int n, int weight[], int value[], int W) {
 		return 0;
 	}
 
-	if (dp[n][weight] != -1) {
+	if (dp[n][W] != -1) {
 		return dp[n][W];
 	}
 
