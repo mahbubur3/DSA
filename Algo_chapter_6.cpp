@@ -1,3 +1,4 @@
+// Dijkstra algorithm - BFS cannot work in weighted graph. so use dijkstra
 // Dijkstra Naive version emplementation (BFS)
 const int N = 100;
 vector<pair<int, int>> v[N]; // one is node, another is cost or weight
