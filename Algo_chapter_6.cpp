@@ -5,29 +5,29 @@ using namespace std;
 
 // Dectect cycle in undirected graph using BFS
 const int n = 1e5 + 5;
-bool is_visited[n];
+bool isVisited[n];
 vector<int> adj[n];
-int parent_array[n];
-bool is_cycle;
+int parentArray[n];
+bool isCycle;
 
-void bfs_traversal(int src) {
+void bfs(int src) {
 	queue<int> q;
 	q.push(src);
-	is_visited[src] = true;
+	isVisited[src] = true;
 
 	while (!q.empty()) {
-		int parent_node = q.front();
+		int parentNode = q.front();
 		q.pop();
 
-		for (int child_node : adj[parent_node]) {
-			if (is_visited[child_node] && parent_array[parent_node] != child_node) {
-				is_cycle = true;
+		for (int childNode : adj[parentNode]) {
+			if (isVisited[childNode] && parentArray[parentNode] != childNode) {
+				isCycle = true;
 			}
 
-			if (!is_visited[child_node]) {
-				is_visited[child_node] = true;
-				parent_array[child_node] = parent_node;
-				q.push(child_node);
+			if (!isVisited[childNode]) {
+				isVisited[childNode] = true;
+				parentArray[childNode] = parentNode;
+				q.push(childNode);
 			}
 		}
 	}
@@ -43,17 +43,17 @@ int main() {
 		adj[y].push_back(x);
 	}
 
-	memset(is_visited, false, sizeof(is_visited));
-	memset(parent_array, false, sizeof(parent_array));
-	is_cycle = false;
+	memset(isVisited, false, sizeof(isVisited));
+	memset(parentArray, false, sizeof(parentArray));
+	isCycle = false;
 
 	for (int i = 0; i < node; i++) {
-		if (!is_visited[i]) {
-			bfs_traversal(i);
+		if (!isVisited[i]) {
+			bfs(i);
 		}
 	}
 
-	if (is_cycle) {
+	if (isCycle) {
 		cout << "Cycle found" << endl;
 	} else {
 		cout << "Cycle not found" << endl;
@@ -69,21 +69,21 @@ int main() {
 
 // Dectect cycle in undirected graph using DFS
 const int n = 1e5 + 5;
-bool is_visited[n];
+bool isVisited[n];
 vector<int> adj[n];
-int parent_array[n];
-bool is_cycle;
+int parentArray[n];
+bool isCycle;
 
-void dfs_traversal(int parent_node) {
-    is_visited[parent_node] = true;
-    for (int child_node : adj[parent_node]) {
-        if (is_visited[child_node] && parent_array[parent_node] != child_node) {
-			is_cycle = true;
+void dfs(int parentNode) {
+    isVisited[parentNode] = true;
+    for (int childNode : adj[parentNode]) {
+        if (isVisited[childNode] && parentArray[parentNode] != childNode) {
+			isCycle = true;
 		}
         
-        if (!is_visited[child_node]) {
-            parent_array[child_node] = parent_node;
-            dfs_traversal(child_node);
+        if (!isVisited[childNode]) {
+            parentArray[childNode] = parentNode;
+            dfs(childNode);
         }
     }
 }
@@ -98,17 +98,17 @@ int main() {
 		adj[y].push_back(x);
 	}
 
-	memset(is_visited, false, sizeof(is_visited));
-	memset(parent_array, false, sizeof(parent_array));
-	is_cycle = false;
+	memset(isVisited, false, sizeof(isVisited));
+	memset(parentArray, false, sizeof(parentArray));
+	isCycle = false;
 
 	for (int i = 0; i < node; i++) {
-		if (!is_visited[i]) {
-			dfs_traversal(i);
+		if (!isVisited[i]) {
+			dfs(i);
 		}
 	}
 
-	if (is_cycle) {
+	if (isCycle) {
 		cout << "Cycle found" << endl;
 	} else {
 		cout << "Cycle not found" << endl;
@@ -124,26 +124,26 @@ int main() {
 
 // Dectect cycle in directed graph using DFS
 const int n = 1e5 + 5;
-bool is_visited[n];
+bool isVisited[n];
 vector<int> adj[n];
-bool is_path_visited[n];
-bool is_cycle;
+bool isPathVisited[n];
+bool isCycle;
 
-void dfs_traversal(int parent_node) {
-    is_visited[parent_node] = true;
-    is_path_visited[parent_node] = true;
+void dfs(int parentNode) {
+    isVisited[parentNode] = true;
+    isPathVisited[parentNode] = true;
     
-    for (int child_node : adj[parent_node]) {
-        if (!is_path_visited[child_node]) {
-            is_cycle = true;
+    for (int childNode : adj[parentNode]) {
+        if (!isPathVisited[childNode]) {
+            isCycle = true;
         }
         
-        if (!is_visited[child_node]) {
-            dfs_traversal(child_node);
+        if (!isVisited[childNode]) {
+            dfs(childNode);
         }
     }
     
-    is_path_visited[parent_node] = false;
+    isPathVisited[parentNode] = false;
 }
 
 int main() {
@@ -155,17 +155,17 @@ int main() {
 		adj[x].push_back(y);
 	}
 	
-	memset(is_visited, false, sizeof(is_visited));
-	memset(is_path_visited, false, sizeof(is_path_visited));
-	is_cycle = false;
+	memset(isVisited, false, sizeof(isVisited));
+	memset(isPathVisited, false, sizeof(isPathVisited));
+	isCycle = false;
 	
 	for (int i = 0; i < node; i++) {
-	    if (!is_visited[i]) {
-	        dfs_traversal(i);
+	    if (!isVisited[i]) {
+	        dfs(i);
 	    }
 	}
 	
-	if (is_cycle) {
+	if (isCycle) {
 	    cout << "Cycle found" << endl;
 	} else {
 	    cout << "Cycle not found" << endl;
@@ -173,5 +173,3 @@ int main() {
 	
 	return 0;
 }
-
-
