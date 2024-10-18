@@ -1,3 +1,14 @@
+/*
+BFS, Dijkstra, and Bellman-Ford are algorithms used for finding the single-source shortest path:
+-BFS: Used for unweighted graphs.
+-Dijkstra: Used for weighted graphs with non-negative weights.
+-Bellman-Ford: Used for weighted graphs, including those with negative weights, and can detect negative weight cycles.
+Floyd-Warshall is an algorithm for finding the all-pairs shortest path, meaning it computes the shortest paths
+between every pair of vertices in a graph. It works for both positive and negative edge weights (but no negative weight cycles).
+*/
+
+
+// If graph weight is negative then cannot work diakstra, use bellman ford
 // Bellman Ford Algorithm Implementation find shortest path
 class Edge {
 public:
@@ -16,12 +27,12 @@ int main() {
 	int n, e;
 	cin >> n >> e;
 	
-	vector<Edge> edge_list;
+	vector<Edge> edgeList;
 
 	while (e--) {
 		int u, v, c;
 		cin >> u >> v >> c;
-		edge_list.push_back(Edge(u, v, c));
+		edgeList.push_back(Edge(u, v, c));
 	}
 
 	for (int i = 0; i < n; i++) {
@@ -31,7 +42,7 @@ int main() {
 	dis[0] = 0;
 
 	for (int i = 0; i < n - 1; i++) {
-		for (Edge ed : edge_list) {
+		for (Edge ed : edgeList) {
 			int u, v, c;
 			u = ed.u;
 			v = ed.v;
@@ -74,13 +85,13 @@ int main() {
 	int n, e;
 	cin >> n >> e;
 	
-	vector<Edge> edge_list;
+	vector<Edge> edgeList;
 
 	while (e--) {
 		int u, v, c;
 		cin >> u >> v >> c;
-		edge_list.push_back(Edge(u, v, c));
-		// edge_list.push_back(Edge(v, u, c)); // For undirected graph
+		edgeList.push_back(Edge(u, v, c));
+		// edgeList.push_back(Edge(v, u, c)); // For undirected graph
 	}
 
 	for (int i = 0; i < n; i++) {
@@ -90,7 +101,7 @@ int main() {
 	dis[0] = 0;
 
 	for (int i = 0; i < n - 1; i++) {
-		for (Edge ed : edge_list) {
+		for (Edge ed : edgeList) {
 			int u, v, c;
 			u = ed.u;
 			v = ed.v;
@@ -103,7 +114,7 @@ int main() {
 	}
 
 	bool is_cycle = false;
-	for (Edge ed : edge_list) {
+	for (Edge ed : edgeList) {
 			int u, v, c;
 			u = ed.u;
 			v = ed.v;
@@ -131,8 +142,8 @@ int main() {
 
 
 
-
-// Floyd Warshall algorithm inplementaion - 
+// if i need to find shortest find from any source
+// Floyd Warshall algorithm inplementaion
 #include <bits/stdc++.h>
 #define ll long long int
 
