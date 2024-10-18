@@ -3,20 +3,20 @@
 using namespace std;
 
 // Traverse with Pre order
-class BinaryTreeNode {
+class TreeNode {
 public:
 	int data;
-	BinaryTreeNode* left;
-	BinaryTreeNode* right;
+	TreeNode* left;
+	TreeNode* right;
 
-	BinaryTreeNode(int data) {
+	TreeNode(int data) {
 		this->data = data;
 		this->left = NULL;
 		this->right = NULL;
 	}
 };
 
-void preOrder(BinaryTreeNode* root) {
+void preOrder(TreeNode* root) {
 	if (root == NULL) {
 		return;
 	}
@@ -27,16 +27,16 @@ void preOrder(BinaryTreeNode* root) {
 }
 
 int main() {
-	BinaryTreeNode* root = new BinaryTreeNode(10);
-	BinaryTreeNode* a = new BinaryTreeNode(20);
-	BinaryTreeNode* b = new BinaryTreeNode(30);
-	BinaryTreeNode* c = new BinaryTreeNode(40);
-	BinaryTreeNode* d = new BinaryTreeNode(50);
-	BinaryTreeNode* e = new BinaryTreeNode(60);
-	BinaryTreeNode* f = new BinaryTreeNode(70);
-	BinaryTreeNode* g = new BinaryTreeNode(80);
-	BinaryTreeNode* h = new BinaryTreeNode(90);
-	BinaryTreeNode* i = new BinaryTreeNode(100);
+	TreeNode* root = new TreeNode(10);
+	TreeNode* a = new TreeNode(20);
+	TreeNode* b = new TreeNode(30);
+	TreeNode* c = new TreeNode(40);
+	TreeNode* d = new TreeNode(50);
+	TreeNode* e = new TreeNode(60);
+	TreeNode* f = new TreeNode(70);
+	TreeNode* g = new TreeNode(80);
+	TreeNode* h = new TreeNode(90);
+	TreeNode* i = new TreeNode(100);
 
 	root->left = a;
 	root->right = b;
@@ -56,20 +56,20 @@ int main() {
 
 
 // Traverse with post-order
-class BinaryTreeNode {
+class TreeNode {
 public:
 	int data;
-	BinaryTreeNode* left;
-	BinaryTreeNode* right;
+	TreeNode* left;
+	TreeNode* right;
 
-	BinaryTreeNode(int data) {
+	TreeNode(int data) {
 		this->data = data;
 		this->left = NULL;
 		this->right = NULL;
 	}
 };
 
-void postOrder(BinaryTreeNode* root) {
+void postOrder(TreeNode* root) {
 	if (root == NULL) {
 		return;
 	}
@@ -80,16 +80,16 @@ void postOrder(BinaryTreeNode* root) {
 }
 
 int main() {
-	BinaryTreeNode* root = new BinaryTreeNode(10);
-	BinaryTreeNode* a = new BinaryTreeNode(20);
-	BinaryTreeNode* b = new BinaryTreeNode(30);
-	BinaryTreeNode* c = new BinaryTreeNode(40);
-	BinaryTreeNode* d = new BinaryTreeNode(50);
-	BinaryTreeNode* e = new BinaryTreeNode(60);
-	BinaryTreeNode* f = new BinaryTreeNode(70);
-	BinaryTreeNode* g = new BinaryTreeNode(80);
-	BinaryTreeNode* h = new BinaryTreeNode(90);
-	BinaryTreeNode* i = new BinaryTreeNode(100);
+	TreeNode* root = new TreeNode(10);
+	TreeNode* a = new TreeNode(20);
+	TreeNode* b = new TreeNode(30);
+	TreeNode* c = new TreeNode(40);
+	TreeNode* d = new TreeNode(50);
+	TreeNode* e = new TreeNode(60);
+	TreeNode* f = new TreeNode(70);
+	TreeNode* g = new TreeNode(80);
+	TreeNode* h = new TreeNode(90);
+	TreeNode* i = new TreeNode(100);
 
 	root->left = a;
 	root->right = b;
@@ -109,20 +109,20 @@ int main() {
 
 
 // Traverse with in-order
-class BinaryTreeNode {
+class TreeNode {
 public:
 	int data;
-	BinaryTreeNode* left;
-	BinaryTreeNode* right;
+	TreeNode* left;
+	TreeNode* right;
 
-	BinaryTreeNode(int data) {
+	TreeNode(int data) {
 		this->data = data;
 		this->left = NULL;
 		this->right = NULL;
 	}
 };
 
-void inOrder(BinaryTreeNode* root) {
+void inOrder(TreeNode* root) {
 	if (root == NULL) {
 		return;
 	}
@@ -133,16 +133,16 @@ void inOrder(BinaryTreeNode* root) {
 }
 
 int main() {
-	BinaryTreeNode* root = new BinaryTreeNode(10);
-	BinaryTreeNode* a = new BinaryTreeNode(20);
-	BinaryTreeNode* b = new BinaryTreeNode(30);
-	BinaryTreeNode* c = new BinaryTreeNode(40);
-	BinaryTreeNode* d = new BinaryTreeNode(50);
-	BinaryTreeNode* e = new BinaryTreeNode(60);
-	BinaryTreeNode* f = new BinaryTreeNode(70);
-	BinaryTreeNode* g = new BinaryTreeNode(80);
-	BinaryTreeNode* h = new BinaryTreeNode(90);
-	BinaryTreeNode* i = new BinaryTreeNode(100);
+	TreeNode* root = new TreeNode(10);
+	TreeNode* a = new TreeNode(20);
+	TreeNode* b = new TreeNode(30);
+	TreeNode* c = new TreeNode(40);
+	TreeNode* d = new TreeNode(50);
+	TreeNode* e = new TreeNode(60);
+	TreeNode* f = new TreeNode(70);
+	TreeNode* g = new TreeNode(80);
+	TreeNode* h = new TreeNode(90);
+	TreeNode* i = new TreeNode(100);
 
 	root->left = a;
 	root->right = b;
