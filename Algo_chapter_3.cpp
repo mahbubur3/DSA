@@ -47,21 +47,21 @@ char arr[20][20];
 bool vis[20][20];
 vector<pair<int, int>> v = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
 int r, c;
-bool is_valid(int i, int j) {
+bool isValid(int i, int j) {
 	if (i < 0 || i >= r || j < 0 || j >= c) {
 		return false;
 	}
 	return true;
 }
 
-void dfs(int src_i, int src_j) {
-	cout << src_i << " " << src_j << endl;
-	vis[src_i][src_j] = true;
+void dfs(int sI, int sJ) {
+	cout << sI << " " << sJ << endl;
+	vis[sI][sJ] = true;
 	for (int i = 0; i < 4; i++) {
-		int cld_i = src_i + v[i].first;
-		int cld_j = src_j + v[i].second;
-		if (is_valid(cld_i, cld_j) && (!vis[cld_i][cld_j])) {
-			dfs(cld_i, cld_j);
+		int cI = sI + v[i].first;
+		int cJ = sJ + v[i].second;
+		if (isValid(cI, cJ) && (!vis[cI][cJ])) {
+			dfs(cI, cJ);
 		}
 	}
 }
@@ -74,10 +74,10 @@ int main() {
 		}
 	}
 
-	int src_i, src_j;
-	cin >> src_i >> src_j;
+	int sI, sJ;
+	cin >> sI >> sJ;
 	memset(vis, false, sizeof(vis));
-	dfs(src_i, src_j);
+	dfs(sI, sJ);
 
 	return 0;
 }
@@ -90,17 +90,17 @@ int dis[20][20];
 char arr[20][20];
 vector<pair<int, int>> vec = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
 int r, c;
-bool is_valid(int i, int j) {
+bool isValid(int i, int j) {
 	if (i < 0 || i >= r || j < 0 || j >= c) {
 		return false;
 	}
 	return true;
 }
 
-void bfs_traversal(int src_i, int src_j) {
+void bfsTraversal(int sI, int sJ) {
 	queue<pair<int, int>> q;
-	q.push(src_i, src_i);
-	vis[src_i][src_j] = true;
+	q.push(sI, sI);
+	vis[sI][sJ] = true;
 
 	while (!q.empty()) {
 		pair<int, int> par = q.front();
@@ -108,12 +108,12 @@ void bfs_traversal(int src_i, int src_j) {
 		cout << par.first << " " << par.second << endl;
 
 		for (int i = 0; i < 4; i++) {
-			int cld_i = par.first + vec[i].first;
-			int cld_j = par.second + vec[i].second;
-			if (is_valid(cld_i, cld_j) && (!vis[cld_i][cld_j])) {
-				q.push({cld_i, cld_j});
-				vis[cld_i][cld_j] = true;
-				dis[cld_i][cld_j] = dis[par.first][par.second] + 1;
+			int cI = par.first + vec[i].first;
+			int cJ = par.second + vec[i].second;
+			if (isValid(cI, cJ) && (!vis[cI][cJ])) {
+				q.push({cI, cJ});
+				vis[cI][cJ] = true;
+				dis[cI][cJ] = dis[par.first][par.second] + 1;
 			}
 		}
 	}
@@ -129,7 +129,7 @@ int main() {
 
 	memset(vis, false, sizeof(vis));
 	memset(dis, -1, sizeof(dis));
-	bfs_traversal(src_i, src_j);
+	bfsTraversal(sI, sJ);
 
 	return 0;
 }
@@ -143,31 +143,31 @@ int dis[20][20];
 char arr[20][20];
 vector<pair<int, int>> vec = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
 int r, c;
-bool is_valid(int i, int j) {
+bool isValid(int i, int j) {
 	if (i < 0 || i >= r || j < 0 || j >= c) {
 		return false;
 	}
 	return true;
 }
 
-void bfs_traversal(int src_i, int src_j) {
+void bfs(int sI, int sJ) {
 	queue<pair<int, int>> q;
-	q.push({src_i, src_i});
-	vis[src_i][src_j] = true;
-	dis[src_i][src_j] = 0;
+	q.push({sI, sI});
+	vis[sI][sJ] = true;
+	dis[sI][sJ] = 0;
 
 	while (!q.empty()) {
 		pair<int, int> par = q.front();
 		q.pop();
 
 		for (int i = 0; i < 4; i++) {
-			int cld_i = par.first + vec[i].first;
-			int cld_j = par.second + vec[i].second;
+			int cI = par.first + vec[i].first;
+			int cJ = par.second + vec[i].second;
 			
-			if (is_valid(cld_i, cld_j) && (!vis[cld_i][cld_j])) {
-				q.push({cld_i, cld_j});
-				vis[cld_i][cld_j] = true;
-				dis[cld_i][cld_j] = dis[par.first][par.second] + 1;
+			if (isValid(cI, cJ) && (!vis[cI][cJ])) {
+				q.push({cI, cJ});
+				vis[cI][cJ] = true;
+				dis[cI][cJ] = dis[par.first][par.second] + 1;
 			}
 		}
 	}
@@ -181,12 +181,12 @@ int main() {
 		}
 	}
 
-	int src_i, src_j;
-	cin >> src_i >> src_j;
+	int sI, sJ;
+	cin >> sI >> sJ;
 
 	memset(vis, false, sizeof(vis));
 	memset(dis, -1, sizeof(dis));
-	bfs_traversal(src_i, src_j);
+	bfs(sI, sJ);
 	
 	cout << dis[3][3];
 
