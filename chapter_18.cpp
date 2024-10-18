@@ -4,26 +4,26 @@ using namespace std;
 
 
 // Traverse with level order
-class BinaryTreeNode {
+class TreeNode {
 public:
 	int data;
-	BinaryTreeNode* left;
-	BinaryTreeNode* right;
+	TreeNode* left;
+	TreeNode* right;
 
-	BinaryTreeNode(int data) {
+	TreeNode(int data) {
 		this->data = data;
 		this->left = NULL;
 		this->right = NULL;
 	}
 };
 
-void levelOrder(BinaryTreeNode* root) {
-	queue<BinaryTreeNode*> q;
+void levelOrder(TreeNode* root) {
+	queue<TreeNode*> q;
 	q.push(root);
 
 	while (!q.empty()) {
 		// 1. keep first item and take out
-		BinaryTreeNode* frontItem = q.front();
+		TreeNode* frontItem = q.front();
 		q.pop();
 		// 2. do other work
 		cout << frontItem->data << " ";
@@ -38,16 +38,16 @@ void levelOrder(BinaryTreeNode* root) {
 }
 
 int main() {
-	BinaryTreeNode* root = new BinaryTreeNode(10);
-	BinaryTreeNode* a = new BinaryTreeNode(20);
-	BinaryTreeNode* b = new BinaryTreeNode(30);
-	BinaryTreeNode* c = new BinaryTreeNode(40);
-	BinaryTreeNode* d = new BinaryTreeNode(50);
-	BinaryTreeNode* e = new BinaryTreeNode(60);
-	BinaryTreeNode* f = new BinaryTreeNode(70);
-	BinaryTreeNode* g = new BinaryTreeNode(80);
-	BinaryTreeNode* h = new BinaryTreeNode(90);
-	BinaryTreeNode* i = new BinaryTreeNode(100);
+	TreeNode* root = new TreeNode(10);
+	TreeNode* a = new TreeNode(20);
+	TreeNode* b = new TreeNode(30);
+	TreeNode* c = new TreeNode(40);
+	TreeNode* d = new TreeNode(50);
+	TreeNode* e = new TreeNode(60);
+	TreeNode* f = new TreeNode(70);
+	TreeNode* g = new TreeNode(80);
+	TreeNode* h = new TreeNode(90);
+	TreeNode* i = new TreeNode(100);
 
 	root->left = a;
 	root->right = b;
@@ -70,55 +70,55 @@ int main() {
 
 
 /* Binary tree node input from user */
-class BinaryTreeNode {
+class TreeNode {
 public:
 	int data;
-	BinaryTreeNode* left;
-	BinaryTreeNode* right;
+	TreeNode* left;
+	TreeNode* right;
 
-	BinaryTreeNode(int data) {
+	TreeNode(int data) {
 		this->data = data;
 		this->left = NULL;
 		this->right = NULL;
 	}
 };
 
-BinaryTreeNode* inputBinaryTree() {
-	BinaryTreeNode* root;
+TreeNode* inputBinaryTree() {
+	TreeNode* root;
 
 	int n;
 	cin >> n;
 	if (n == -1) {
 		root = NULL;
 	} else {
-		root = new BinaryTreeNode(n);
+		root = new TreeNode(n);
 	}
 
-	queue<BinaryTreeNode*> q;
+	queue<TreeNode*> q;
 	if (root != NULL) {
 		q.push(root);
 	}
 
 	while (!q.empty()) {
 		// 1. keep and take out
-		BinaryTreeNode* p = q.front();
+		TreeNode* p = q.front();
 		q.pop();
 
 		// 2. do other work
 		int l, r;
 		cin >> l >> r;
-		BinaryTreeNode* myLeft;
-		BinaryTreeNode* myRight;
+		TreeNode* myLeft;
+		TreeNode* myRight;
 		if (l == -1) {
 			myLeft = NULL;
 		} else {
-			myLeft = new BinaryTreeNode(l);
+			myLeft = new TreeNode(l);
 		}
 
 		if (r == -1) {
 			myRight = NULL;
 		} else {
-			myRight = new BinaryTreeNode(r);
+			myRight = new TreeNode(r);
 		}
 		p->left = myLeft;
 		p->right = myRight;
@@ -137,7 +137,7 @@ BinaryTreeNode* inputBinaryTree() {
 }
 
 // print with pre-order
-void printBinaryTree(BinaryTreeNode* root) {
+void printBinaryTree(TreeNode* root) {
 	if (root == NULL) {
 		return;
 	}
@@ -148,16 +148,16 @@ void printBinaryTree(BinaryTreeNode* root) {
 }
 
 // Print with level order
-/* void printBinaryTree(BinaryTreeNode* root) {
+/* void printBinaryTree(TreeNode* root) {
 	if (root == NULL) {
 		return;
 	}
 
-	queue<BinaryTreeNode*> q;
+	queue<TreeNode*> q;
 	q.push(root);
 
 	while (!q.empty()) {
-		BinaryTreeNode* frontItem = q.front();
+		TreeNode* frontItem = q.front();
 		q.pop();
 		cout << frontItem->data << " ";
 		if (frontItem->left) { // or frontItem->left != NULL
@@ -170,7 +170,7 @@ void printBinaryTree(BinaryTreeNode* root) {
 } */
 
 int main() {
-	BinaryTreeNode* root = inputBinaryTree();
+	TreeNode* root = inputBinaryTree();
 	printBinaryTree(root);
 
 	return 0;
@@ -182,53 +182,53 @@ int main() {
 
 
 // Count nodes in a binary tree
-class BinaryTreeNode {
+class TreeNode {
 public:
 	int data;
-	BinaryTreeNode* left;
-	BinaryTreeNode* right;
+	TreeNode* left;
+	TreeNode* right;
 
-	BinaryTreeNode(int data) {
+	TreeNode(int data) {
 		this->data = data;
 		this->left = NULL;
 		this->right = NULL;
 	}
 };
 
-BinaryTreeNode* inputBinaryTree() {
-	BinaryTreeNode* root;
+TreeNode* inputBinaryTree() {
+	TreeNode* root;
 
 	int n;
 	cin >> n;
 	if (n == -1) {
 		root = NULL;
 	} else {
-		root = new BinaryTreeNode(n);
+		root = new TreeNode(n);
 	}
 
-	queue<BinaryTreeNode*> q;
+	queue<TreeNode*> q;
 	if (root != NULL) {
 		q.push(root);
 	}
 
 	while (!q.empty()) {
-		BinaryTreeNode* p = q.front();
+		TreeNode* p = q.front();
 		q.pop();
 
 		int l, r;
 		cin >> l >> r;
-		BinaryTreeNode* myLeft;
-		BinaryTreeNode* myRight;
+		TreeNode* myLeft;
+		TreeNode* myRight;
 		if (l == -1) {
 			myLeft = NULL;
 		} else {
-			myLeft = new BinaryTreeNode(l);
+			myLeft = new TreeNode(l);
 		}
 
 		if (r == -1) {
 			myRight = NULL;
 		} else {
-			myRight = new BinaryTreeNode(r);
+			myRight = new TreeNode(r);
 		}
 		p->left = myLeft;
 		p->right = myRight;
@@ -245,7 +245,7 @@ BinaryTreeNode* inputBinaryTree() {
 	return root;
 }
 
-int countNode(BinaryTreeNode* root) {
+int countNode(TreeNode* root) {
 	if (root == NULL) {
 		return 0;
 	}
@@ -256,7 +256,7 @@ int countNode(BinaryTreeNode* root) {
 }
 
 int main() {
-	BinaryTreeNode* root = BinaryTreeNode();
+	TreeNode* root = TreeNode();
 	cout << countNode(root) << endl;
 
 	return 0;
@@ -269,53 +269,53 @@ int main() {
 
 
 // count leaf nodes in a binary tree
-class BinaryTreeNode {
+class TreeNode {
 public:
 	int data;
-	BinaryTreeNode* left;
-	BinaryTreeNode* right;
+	TreeNode* left;
+	TreeNode* right;
 
-	BinaryTreeNode(int data) {
+	TreeNode(int data) {
 		this->data = data;
 		this->left = NULL;
 		this->right = NULL;
 	}
 };
 
-BinaryTreeNode* inputBinaryTree() {
-	BinaryTreeNode* root;
+TreeNode* inputBinaryTree() {
+	TreeNode* root;
 
 	int n;
 	cin >> n;
 	if (n == -1) {
 		root = NULL;
 	} else {
-		root = new BinaryTreeNode(n);
+		root = new TreeNode(n);
 	}
 
-	queue<BinaryTreeNode*> q;
+	queue<TreeNode*> q;
 	if (root != NULL) {
 		q.push(root);
 	}
 
 	while (!q.empty()) {
-		BinaryTreeNode* p = q.front();
+		TreeNode* p = q.front();
 		q.pop();
 
 		int l, r;
 		cin >> l >> r;
-		BinaryTreeNode* myLeft;
-		BinaryTreeNode* myRight;
+		TreeNode* myLeft;
+		TreeNode* myRight;
 		if (l == -1) {
 			myLeft = NULL;
 		} else {
-			myLeft = new BinaryTreeNode(l);
+			myLeft = new TreeNode(l);
 		}
 
 		if (r == -1) {
 			myRight = NULL;
 		} else {
-			myRight = new BinaryTreeNode(r);
+			myRight = new TreeNode(r);
 		}
 		p->left = myLeft;
 		p->right = myRight;
@@ -332,7 +332,7 @@ BinaryTreeNode* inputBinaryTree() {
 	return root;
 }
 
-int countLeaf(BinaryTreeNode* root) {
+int countLeaf(TreeNode* root) {
 	if (root == NULL) {
 		return 0;
 	}
@@ -347,7 +347,7 @@ int countLeaf(BinaryTreeNode* root) {
 }
 
 int main() {
-	BinaryTreeNode* root = inputBinaryTree();
+	TreeNode* root = inputBinaryTree();
 	cout << countLeaf(root) << endl;
 
 	return 0;
@@ -359,53 +359,53 @@ int main() {
 
 
 // Find maximum height of a binary tree
-class BinaryTreeNode {
+class TreeNode {
 public:
 	int data;
-	BinaryTreeNode* left;
-	BinaryTreeNode* right;
+	TreeNode* left;
+	TreeNode* right;
 
-	BinaryTreeNode(int data) {
+	TreeNode(int data) {
 		this->data = data;
 		this->left = NULL;
 		this->right = NULL;
 	}
 };
 
-BinaryTreeNode* inputBinaryTree() {
-	BinaryTreeNode* root;
+TreeNode* inputBinaryTree() {
+	TreeNode* root;
 
 	int n;
 	cin >> n;
 	if (n == -1) {
 		root = NULL;
 	} else {
-		root = new BinaryTreeNode(n);
+		root = new TreeNode(n);
 	}
 
-	queue<BinaryTreeNode*> q;
+	queue<TreeNode*> q;
 	if (root != NULL) {
 		q.push(root);
 	}
 
 	while (!q.empty()) {
-		BinaryTreeNode* p = q.front();
+		TreeNode* p = q.front();
 		q.pop();
 
 		int l, r;
 		cin >> l >> r;
-		BinaryTreeNode* myLeft;
-		BinaryTreeNode* myRight;
+		TreeNode* myLeft;
+		TreeNode* myRight;
 		if (l == -1) {
 			myLeft = NULL;
 		} else {
-			myLeft = new BinaryTreeNode(l);
+			myLeft = new TreeNode(l);
 		}
 
 		if (r == -1) {
 			myRight = NULL;
 		} else {
-			myRight = new BinaryTreeNode(r);
+			myRight = new TreeNode(r);
 		}
 		p->left = myLeft;
 		p->right = myRight;
@@ -422,7 +422,7 @@ BinaryTreeNode* inputBinaryTree() {
 	return root;
 }
 
-int getMaxHeight(BinaryTreeNode* root) {
+int getMaxHeight(TreeNode* root) {
 	if (root == NULL) {
 		return 0;
 	}
@@ -433,7 +433,7 @@ int getMaxHeight(BinaryTreeNode* root) {
 }
 
 int main() {
-	BinaryTreeNode* root = inputBinaryTree();
+	TreeNode* root = inputBinaryTree();
 	cout << getMaxHeight(root) << endl;
 
 	return 0;
