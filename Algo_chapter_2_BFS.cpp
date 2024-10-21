@@ -5,14 +5,17 @@ using namespace std;
 // BFS traversal
 vector<int> v[1005];
 bool visited[1005];
+
 void bfs(int src) {
 	queue<int> q;
 	q.push(src);
 	visited[src] = true;
+	
 	while (!q.empty()) {
 		int parent = q.front();
 		q.pop();
 		cout << parent << " ";
+		
 		for (int child : v[parent]) {
 			if (!visited[child]) {
 				q.push(child);
@@ -34,7 +37,9 @@ int main() {
 
 	int src;
 	cin >> src;
+	
 	memset(visited, false, sizeof(visited));
+	
 	bfs(src);
 
 	return 0;
@@ -47,14 +52,17 @@ int main() {
 vector<int> v[1005];
 bool visited[1005];
 int level[1005];
+
 void bfs(int src) {
 	queue<int> q;
 	q.push(src);
 	visited[src] = true;
 	level[src] = 0;
+	
 	while (!q.empty()) {
 		int parent = q.front();
 		q.pop();
+		
 		for (int child : v[parent]) {
 			if (!visited[child]) {
 				q.push(child);
@@ -77,9 +85,12 @@ int main() {
 
 	int src;
 	cin >> src;
+	
 	memset(visited, false, sizeof(visited));
 	memset(level, -1, sizeof(level));
+	
 	bfs(src);
+	
 	for (int i = 0; i < n; i++) {
 		cout << i << " " << level[i] << endl;
 	}
@@ -96,14 +107,17 @@ vector<int> v[1005];
 bool visited[1005];
 int level[1005];
 int parent[1005];
+
 void bfs(int src) {
 	queue<int> q;
 	q.push(src);
 	visited[src] = true;
 	level[src] = 0;
+	
 	while (!q.empty()) {
 		int p = q.front();
 		q.pop();
+		
 		for (int child : v[p]) {
 			if (!visited[child]) {
 				q.push(child);
@@ -127,19 +141,23 @@ int main() {
 
 	int src, des;
 	cin >> src >> des;
+	
 	memset(visited, false, sizeof(visited));
 	memset(level, -1, sizeof(level));
 	memset(parent, -1, sizeof(parent));
+	
 	bfs(src);
 
 	int x = des;
 	vector<int> v2;
+	
 	while (x != -1) {
 		v2.push_back(x);
 		x = parent[x];
 	}
 	
 	reverse(v2.begin(), v2.end());
+	
 	for (int i : v2) {
 		cout << i << " ";
     }
