@@ -4,9 +4,11 @@
 const int N = 1e5 + 5;
 vector<int> v[N];
 bool vis[N];
+
 void dfs(int src) {
 	cout << src << " ";
 	vis[src] = true;
+	
 	for (int cld : v[src]) {
 		if (!vis[cld]) {
 			dfs(cld);
@@ -25,6 +27,7 @@ int main() {
 	}
 
 	memset(vis, false, sizeof(vis));
+	
 	dfs(0);
 
 	return 0;
@@ -47,6 +50,7 @@ char arr[20][20];
 bool vis[20][20];
 vector<pair<int, int>> v = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
 int r, c;
+
 bool isValid(int i, int j) {
 	if (i < 0 || i >= r || j < 0 || j >= c) {
 		return false;
@@ -57,6 +61,7 @@ bool isValid(int i, int j) {
 void dfs(int sI, int sJ) {
 	cout << sI << " " << sJ << endl;
 	vis[sI][sJ] = true;
+	
 	for (int i = 0; i < 4; i++) {
 		int cI = sI + v[i].first;
 		int cJ = sJ + v[i].second;
@@ -76,7 +81,9 @@ int main() {
 
 	int sI, sJ;
 	cin >> sI >> sJ;
+	
 	memset(vis, false, sizeof(vis));
+	
 	dfs(sI, sJ);
 
 	return 0;
@@ -90,6 +97,7 @@ int dis[20][20];
 char arr[20][20];
 vector<pair<int, int>> vec = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
 int r, c;
+
 bool isValid(int i, int j) {
 	if (i < 0 || i >= r || j < 0 || j >= c) {
 		return false;
@@ -129,6 +137,7 @@ int main() {
 
 	memset(vis, false, sizeof(vis));
 	memset(dis, -1, sizeof(dis));
+	
 	bfsTraversal(sI, sJ);
 
 	return 0;
@@ -143,6 +152,7 @@ int dis[20][20];
 char arr[20][20];
 vector<pair<int, int>> vec = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
 int r, c;
+
 bool isValid(int i, int j) {
 	if (i < 0 || i >= r || j < 0 || j >= c) {
 		return false;
@@ -163,7 +173,6 @@ void bfs(int sI, int sJ) {
 		for (int i = 0; i < 4; i++) {
 			int cI = par.first + vec[i].first;
 			int cJ = par.second + vec[i].second;
-			
 			if (isValid(cI, cJ) && (!vis[cI][cJ])) {
 				q.push({cI, cJ});
 				vis[cI][cJ] = true;
@@ -186,6 +195,7 @@ int main() {
 
 	memset(vis, false, sizeof(vis));
 	memset(dis, -1, sizeof(dis));
+	
 	bfs(sI, sJ);
 	
 	cout << dis[3][3];
